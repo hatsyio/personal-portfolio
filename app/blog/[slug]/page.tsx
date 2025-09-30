@@ -101,7 +101,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
     <div className="min-h-screen px-6 lg:px-20 py-20">
       <div className="max-w-3xl mx-auto">
         <Link
-          href={`${process.env.NODE_ENV === 'production' ? '/personal-portfolio' : ''}/#blog`}
+          href="/#blog"
           className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8"
         >
           <ArrowLeft className="w-4 h-4" />
