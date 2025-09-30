@@ -9,7 +9,7 @@ export function Hero() {
         <div className="mb-8 flex justify-center lg:justify-start">
           <div className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-primary/40">
             <Image
-              src={`${process.env.NODE_ENV === 'production' ? '/personal-portfolio' : ''}/developer-profile-photo.jpg`}
+              src="/developer-profile-photo.jpg"
               alt="Josep Pascual Badia"
               width={128}
               height={128}

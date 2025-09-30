@@ -56,7 +56,7 @@ export function Projects() {
             >
               <div className="relative w-full h-48 overflow-hidden rounded-t-lg border-b border-primary/20">
                 <Image
-                  src={`${process.env.NODE_ENV === 'production' ? '/personal-portfolio' : ''}${project.image || "/placeholder.svg"}`}
+                  src={project.image || "/placeholder.svg"}
                   alt={project.title}
                   width={600}
                   height={300}

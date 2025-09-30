@@ -15,7 +15,7 @@ export function About() {
 
           <div className="relative w-full h-64 rounded-lg overflow-hidden border border-primary/30">
             <Image
-              src={`${process.env.NODE_ENV === 'production' ? '/personal-portfolio' : ''}/hometown.jpeg`}
+              src="/hometown.jpeg"
               alt="Hometown"
               width={800}
               height={400}

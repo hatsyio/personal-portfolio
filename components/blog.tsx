@@ -50,7 +50,7 @@ export function Blog() {
               <Card className="group bg-card/40 backdrop-blur-xl border-primary/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(255,0,200,0.2)] transition-all duration-300 cursor-pointer">
                 <div className="relative w-full h-48 overflow-hidden rounded-t-lg border-b border-primary/20">
                   <Image
-                    src={`${process.env.NODE_ENV === 'production' ? '/personal-portfolio' : ''}${post.image || "/placeholder.svg"}`}
+                    src={post.image || "/placeholder.svg"}
                     alt={post.title}
                     width={600}
                     height={300}
