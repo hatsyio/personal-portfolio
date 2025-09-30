@@ -4,67 +4,82 @@ import { notFound } from "next/navigation"
 
 // This would typically come from a CMS or markdown files
 const blogPosts: Record<string, { title: string; date: string; content: string }> = {
-  "building-accessible-web-applications": {
-    title: "Building Accessible Web Applications",
-    date: "March 15, 2024",
+  "reflexiones-open-source-jhipster": {
+    title: "Reflexiones sobre Open Source y JHipster",
+    date: "Marzo 15, 2024",
     content: `
-      <p>Web accessibility is not just a nice-to-have feature—it's essential for creating inclusive digital experiences that everyone can use, regardless of their abilities or the devices they use.</p>
+      <p>Contribuir al ecosistema de JHipster ha sido una de las experiencias más enriquecedoras de mi carrera como desarrollador. No solo he aprendido sobre desarrollo colaborativo, sino también sobre la importancia de la comunidad en el software open source.</p>
       
-      <h2>Why Accessibility Matters</h2>
-      <p>Approximately 15% of the world's population lives with some form of disability. By building accessible websites, we ensure that everyone can access information, services, and opportunities online.</p>
+      <h2>¿Qué es JHipster?</h2>
+      <p>JHipster es un generador de aplicaciones modernas que combina Spring Boot, Angular/React/Vue, y otras tecnologías para crear aplicaciones web completas. Su filosofía de "convención sobre configuración" acelera significativamente el desarrollo.</p>
       
-      <h2>Key Principles</h2>
+      <h2>Mi Experiencia Contribuyendo</h2>
+      <p>Desde que empecé a contribuir, he trabajado en mejoras de documentación, corrección de bugs, y nuevas funcionalidades. Cada pull request es una oportunidad de aprendizaje y de contribuir a una herramienta que miles de desarrolladores usan diariamente.</p>
+      
+      <h2>Lecciones Aprendidas</h2>
       <ul>
-        <li><strong>Perceivable:</strong> Information must be presentable to users in ways they can perceive</li>
-        <li><strong>Operable:</strong> User interface components must be operable</li>
-        <li><strong>Understandable:</strong> Information and operation must be understandable</li>
-        <li><strong>Robust:</strong> Content must be robust enough to work with current and future technologies</li>
+        <li><strong>Comunidad:</strong> El open source se trata de personas trabajando juntas hacia un objetivo común</li>
+        <li><strong>Calidad:</strong> El código debe ser no solo funcional, sino mantenible y bien documentado</li>
+        <li><strong>Paciencia:</strong> Los procesos de revisión pueden ser largos, pero son esenciales para la calidad</li>
+        <li><strong>Comunicación:</strong> La comunicación clara es tan importante como el código</li>
       </ul>
       
-      <h2>Practical Implementation</h2>
-      <p>Start with semantic HTML, add proper ARIA labels, ensure keyboard navigation works smoothly, and test with screen readers. These foundational steps will significantly improve your application's accessibility.</p>
+      <h2>El Impacto del Open Source</h2>
+      <p>Contribuir a proyectos open source no solo beneficia a la comunidad, sino que también mejora tus propias habilidades técnicas y de comunicación. Es una inversión en tu crecimiento profesional y en el ecosistema tecnológico.</p>
     `,
   },
-  "my-journey-with-nextjs": {
-    title: "My Journey with Next.js",
-    date: "February 28, 2024",
+  "creando-bots-twitter-python": {
+    title: "Creando Bots de Twitter con Python",
+    date: "Febrero 28, 2024",
     content: `
-      <p>Next.js has revolutionized the way I build web applications. Its powerful features and developer experience make it my go-to framework for modern web development.</p>
+      <p>Construir pokemon-war-bot fue un proyecto que combinó mi pasión por la programación con mi amor por los videojuegos. Fue un viaje técnico lleno de desafíos y aprendizajes sobre APIs, automatización y creatividad.</p>
       
-      <h2>What Makes Next.js Special</h2>
-      <p>The framework provides an excellent balance between performance and developer experience. Server-side rendering, static site generation, and API routes all work seamlessly together.</p>
+      <h2>La Idea Inicial</h2>
+      <p>Todo comenzó con una idea simple: crear un bot que simulara batallas de Pokémon en Twitter. Los usuarios podrían desafiar al bot, y este respondería con movimientos basados en la lógica del juego original.</p>
       
-      <h2>Key Features I Love</h2>
+      <h2>Desafíos Técnicos</h2>
+      <p>Integrar la API de Twitter, manejar la lógica de batallas, y crear una interfaz intuitiva fueron solo algunos de los retos. Cada uno me enseñó algo nuevo sobre desarrollo de software.</p>
+      
+      <h2>Tecnologías Utilizadas</h2>
       <ul>
-        <li>File-based routing that just makes sense</li>
-        <li>Built-in optimization for images and fonts</li>
-        <li>Flexible rendering strategies (SSR, SSG, ISR)</li>
-        <li>Excellent TypeScript support</li>
+        <li><strong>Python:</strong> Para la lógica del bot y manejo de datos</li>
+        <li><strong>Twitter API v2:</strong> Para interactuar con la plataforma</li>
+        <li><strong>SQLite:</strong> Para almacenar información de Pokémon y usuarios</li>
+        <li><strong>Heroku:</strong> Para el despliegue y hosting</li>
       </ul>
       
-      <h2>Real-World Impact</h2>
-      <p>Since adopting Next.js, my projects load faster, rank better in search engines, and provide a superior user experience. The framework handles many complex optimizations automatically, letting me focus on building features.</p>
+      <h2>Lecciones Aprendidas</h2>
+      <p>Este proyecto me enseñó sobre la importancia de la documentación de APIs, el manejo de rate limits, y cómo hacer que la tecnología sea accesible y divertida para los usuarios finales.</p>
+      
+      <h2>El Resultado</h2>
+      <p>El bot no solo funcionó técnicamente, sino que creó una pequeña comunidad de usuarios que disfrutaban de las batallas. Fue una prueba de que la programación puede ser tanto funcional como entretenida.</p>
     `,
   },
-  "the-art-of-clean-code": {
-    title: "The Art of Clean Code",
-    date: "January 10, 2024",
+  "tecnologia-videojuegos-creatividad": {
+    title: "Tecnología, Videojuegos y Creatividad",
+    date: "Enero 10, 2024",
     content: `
-      <p>Writing clean code is an art form that requires practice, discipline, and a genuine care for the craft. It's about creating code that's not just functional, but maintainable and elegant.</p>
+      <p>Los videojuegos han influido profundamente en mi forma de programar y ver la tecnología. No es solo entretenimiento; es una fuente constante de inspiración y aprendizaje que se refleja en mi trabajo diario.</p>
       
-      <h2>What is Clean Code?</h2>
-      <p>Clean code is code that is easy to read, understand, and modify. It follows consistent patterns, has clear naming conventions, and is well-organized.</p>
+      <h2>La Intersección entre Juego y Código</h2>
+      <p>Los videojuegos son sistemas complejos que requieren programación elegante, optimización de rendimiento, y diseño de experiencias de usuario. Cada juego que juego me enseña algo sobre cómo estructurar código y resolver problemas.</p>
       
-      <h2>Principles to Follow</h2>
+      <h2>Lecciones de Diseño</h2>
+      <p>Los videojuegos me han enseñado sobre la importancia de la usabilidad, la retroalimentación visual, y la progresión gradual de complejidad. Estos principios se aplican directamente al desarrollo de software.</p>
+      
+      <h2>Creatividad y Resolución de Problemas</h2>
       <ul>
-        <li><strong>Meaningful Names:</strong> Variables and functions should clearly express their purpose</li>
-        <li><strong>Single Responsibility:</strong> Each function should do one thing well</li>
-        <li><strong>DRY Principle:</strong> Don't Repeat Yourself—extract common logic</li>
-        <li><strong>Comments When Necessary:</strong> Code should be self-documenting, but complex logic deserves explanation</li>
+        <li><strong>Pensamiento Lateral:</strong> Los puzzles en videojuegos desarrollan habilidades de resolución de problemas</li>
+        <li><strong>Iteración Rápida:</strong> Los juegos indie muestran cómo iterar y mejorar rápidamente</li>
+        <li><strong>Experiencia del Usuario:</strong> La inmersión en juegos enseña sobre diseño centrado en el usuario</li>
+        <li><strong>Optimización:</strong> Los juegos AAA demuestran técnicas avanzadas de optimización</li>
       </ul>
       
-      <h2>The Long-Term Benefits</h2>
-      <p>Investing time in writing clean code pays dividends. Your future self (and your teammates) will thank you when they need to modify or debug the code months or years later.</p>
+      <h2>Inspiración para Proyectos</h2>
+      <p>Muchos de mis proyectos personales nacen de ideas que surgen mientras juego. Desde bots de Twitter inspirados en Pokémon hasta visualizaciones de datos inspiradas en interfaces de juegos, la creatividad fluye en ambas direcciones.</p>
+      
+      <h2>El Futuro de la Tecnología</h2>
+      <p>Los videojuegos están a la vanguardia de la tecnología: realidad virtual, inteligencia artificial, y gráficos en tiempo real. Seguir esta industria me mantiene actualizado con las últimas tendencias tecnológicas.</p>
     `,
   },
 }
@@ -86,7 +101,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
     <div className="min-h-screen px-6 lg:px-20 py-20">
       <div className="max-w-3xl mx-auto">
         <Link
-          href="/#blog"
+          href={`${process.env.NODE_ENV === 'production' ? '/personal-portfolio' : ''}/#blog`}
           className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8"
         >
           <ArrowLeft className="w-4 h-4" />
