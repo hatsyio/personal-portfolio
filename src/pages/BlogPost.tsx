@@ -1,5 +1,5 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft } from '../components/Icons'
 import { blogPosts } from '../data/blogPosts'
 
 export function BlogPost() {
