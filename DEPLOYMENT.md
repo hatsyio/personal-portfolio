@@ -42,7 +42,7 @@ When you push to `main` branch:
      - Branch: **gh-pages** / (root)
    - Save the settings
 
-2. **The workflow is already configured** in `.github/workflows/deploy-main.yml`
+2. **The workflow is already configured** in `.github/workflows/deploy.yml`
 
 3. **Production URL**: `https://<username>.github.io/<repo-name>/`
 
