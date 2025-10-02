@@ -1,4 +1,4 @@
-import { Github, Twitter, Mail, Globe } from 'lucide-react'
+import { Github, Twitter, Mail, Globe } from './Icons'
 
 export function Contact() {
   return (
