@@ -1,25 +1,36 @@
 # Netlify Build Configuration for Vite
-# IMPORTANT: In Netlify UI, set Production branch to "none" or a non-existent branch
 # Production deploys via GitHub Pages, Netlify is ONLY for PR previews
 
 [build]
-  # Build command - runs Vite build (tsc && vite build)
+  # Base build settings (used by all contexts)
   command = "pnpm build"
-  
-  # Directory to deploy - Vite outputs to dist/
   publish = "dist"
+  base = "."
+
+# Build environment
+[build.environment]
+  NODE_VERSION = "20"
+  PNPM_VERSION = "9"
+
+# Production builds - skip (GitHub Pages handles this)
+[context.production]
+  command = "echo 'Production builds handled by GitHub Pages' && exit 0"
+  publish = "."
+
+# Deploy previews for PRs - ENABLED
+[context.deploy-preview]
+  command = "pnpm build"
+  publish = "dist"
+
+[context.deploy-preview.environment]
+  NODE_VERSION = "20"
+
+# Branch deploys - DISABLED
+[context.branch-deploy]
+  command = "echo 'Branch deploys disabled' && exit 0"
 
 # Redirect all requests to index.html for SPA routing
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-# Build environment
-[build.environment]
-  NODE_VERSION = "20"
-
-# Deploy ONLY for PR previews
-[context.deploy-preview]
-  command = "pnpm build"
-  publish = "dist"
