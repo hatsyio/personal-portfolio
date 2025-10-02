@@ -1,4 +1,7 @@
 # Netlify Build Configuration for Vite
+# Note: Make sure to remove the Next.js plugin from Netlify UI:
+# Site Settings → Build & deploy → Build plugins → Remove @netlify/plugin-nextjs
+
 [build]
   # Build command - runs Vite build (tsc && vite build)
   command = "pnpm build"
@@ -15,10 +18,3 @@
 # Build environment
 [build.environment]
   NODE_VERSION = "20"
-
-# Disable Next.js plugin (we're using Vite now)
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
-  
-  [plugins.inputs]
-    disable = true
