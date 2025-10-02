@@ -1,29 +1,5 @@
-const blogPosts = [
-  {
-    title: 'Reflexiones sobre Open Source y JHipster',
-    excerpt:
-      'Mis experiencias contribuyendo al ecosistema de JHipster y lo que he aprendido sobre el desarrollo colaborativo en proyectos open source.',
-    date: 'Marzo 15, 2024',
-    slug: 'reflexiones-open-source-jhipster',
-    image: '/open-source-collaboration.png',
-  },
-  {
-    title: 'Creando Bots de Twitter con Python',
-    excerpt:
-      'Un viaje técnico sobre cómo construí pokemon-war-bot y las lecciones aprendidas sobre APIs, automatización y creatividad.',
-    date: 'Febrero 28, 2024',
-    slug: 'creando-bots-twitter-python',
-    image: '/python-bot-development.jpg',
-  },
-  {
-    title: 'Tecnología, Videojuegos y Creatividad',
-    excerpt:
-      'Pensamientos sobre cómo los videojuegos influyen en mi forma de programar y ver la tecnología. La intersección entre el juego y el código.',
-    date: 'Enero 10, 2024',
-    slug: 'tecnologia-videojuegos-creatividad',
-    image: '/gaming-technology-creative.jpg',
-  },
-]
+import { Link } from 'react-router-dom'
+import { blogPosts } from '../data/blogPosts'
 
 export function Blog() {
   return (
@@ -42,25 +18,24 @@ export function Blog() {
 
         <div className="space-y-6">
           {blogPosts.map((post) => (
-            <div
-              key={post.slug}
-              className="group bg-card/40 backdrop-blur-xl border border-primary/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(255,0,200,0.2)] transition-all duration-300 cursor-pointer rounded-lg overflow-hidden"
-            >
-              <div className="relative w-full h-48 overflow-hidden border-b border-primary/20">
-                <img
-                  src={post.image || '/placeholder.svg'}
-                  alt={post.title}
-                  className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
-                />
+            <Link key={post.slug} to={`/blog/${post.slug}`}>
+              <div className="group bg-card/40 backdrop-blur-xl border border-primary/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(255,0,200,0.2)] transition-all duration-300 cursor-pointer rounded-lg overflow-hidden">
+                <div className="relative w-full h-48 overflow-hidden border-b border-primary/20">
+                  <img
+                    src={post.image || '/placeholder.svg'}
+                    alt={post.title}
+                    className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold mb-2 group-hover:text-accent group-hover:drop-shadow-[0_0_10px_rgba(255,0,200,0.5)] transition-all duration-300">
+                    {post.title}
+                  </h3>
+                  <p className="text-base text-muted-foreground mb-4">{post.excerpt}</p>
+                  <p className="text-sm text-muted-foreground">{post.date}</p>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold mb-2 group-hover:text-accent group-hover:drop-shadow-[0_0_10px_rgba(255,0,200,0.5)] transition-all duration-300">
-                  {post.title}
-                </h3>
-                <p className="text-base text-muted-foreground mb-4">{post.excerpt}</p>
-                <p className="text-sm text-muted-foreground">{post.date}</p>
-              </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
