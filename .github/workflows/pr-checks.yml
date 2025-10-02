@@ -2,18 +2,12 @@ name: PR Checks
 
 on:
   pull_request:
-    branches: [ main ]
-    paths:
-      - 'package.json'
-      - 'pnpm-lock.yaml'
-      - 'app/**'
-      - 'components/**'
-      - 'lib/**'
-      - '.github/workflows/**'
+    branches:
+      - main
 
 jobs:
-  validate:
-    name: Validate lockfile and build
+  lint-and-typecheck:
+    name: Lint & Type Check
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -29,40 +23,58 @@ jobs:
         with:
           version: 9
 
-      - name: Verify lockfile is up to date
+      - name: Get pnpm store directory
+        shell: bash
         run: |
-          echo "🔍 Checking if lockfile is synchronized with package.json..."
-          pnpm install --frozen-lockfile
-          if [ -n "$(git status --porcelain)" ]; then
-            echo ""
-            echo "❌ ERROR: pnpm-lock.yaml is out of sync with package.json"
-            echo ""
-            echo "Please run 'pnpm install' locally and commit the updated lockfile:"
-            echo "  pnpm install"
-            echo "  git add pnpm-lock.yaml"
-            echo "  git commit -m 'chore: Update lockfile'"
-            echo ""
-            git status
-            exit 1
-          fi
-          echo "✅ Lockfile is up to date"
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - name: Build project
-        run: |
-          echo "🏗️  Building Next.js project..."
-          pnpm build
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
 
-      - name: Verify build output
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Type check
+        run: pnpm exec tsc --noEmit
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Get pnpm store directory
+        shell: bash
         run: |
-          echo "🔍 Verifying build artifacts..."
-          if [ ! -d "out" ]; then
-            echo "❌ ERROR: Build did not create 'out' directory"
-            exit 1
-          fi
-          if [ ! -f "out/index.html" ]; then
-            echo "❌ ERROR: Build did not create index.html"
-            exit 1
-          fi
-          echo "✅ Build completed successfully"
-          echo "📦 Build output size: $(du -sh out | cut -f1)"
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
 

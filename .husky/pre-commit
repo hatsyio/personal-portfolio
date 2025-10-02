@@ -1,31 +1,21 @@
-# Check if package.json is staged
-if git diff --cached --name-only | grep -q "package.json"; then
-  # Check if pnpm-lock.yaml is also staged
-  if ! git diff --cached --name-only | grep -q "pnpm-lock.yaml"; then
-    echo ""
-    echo "❌ ERROR: package.json is staged but pnpm-lock.yaml is not!"
-    echo ""
-    echo "Run 'pnpm install' to update the lockfile, then stage it:"
-    echo "  pnpm install"
-    echo "  git add pnpm-lock.yaml"
-    echo ""
-    exit 1
-  fi
-fi
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
 
-# Run the lockfile check
-if [ -f "package.json" ]; then
-  echo "🔍 Checking if lockfile is up to date..."
-  if ! pnpm install --frozen-lockfile > /dev/null 2>&1; then
-    echo ""
-    echo "❌ ERROR: pnpm-lock.yaml is out of sync with package.json"
-    echo ""
-    echo "Run 'pnpm install' to update the lockfile:"
-    echo "  pnpm install"
-    echo "  git add pnpm-lock.yaml"
-    echo ""
-    exit 1
-  fi
-  echo "✅ Lockfile is up to date"
-fi
+echo "🔍 Running pre-commit checks..."
+
+# Type check
+echo "📝 Type checking..."
+pnpm exec tsc --noEmit || {
+  echo "❌ Type check failed. Please fix the errors above."
+  exit 1
+}
+
+# Build check
+echo "🏗️  Building..."
+pnpm build || {
+  echo "❌ Build failed. Please fix the errors above."
+  exit 1
+}
+
+echo "✅ All pre-commit checks passed!"
 

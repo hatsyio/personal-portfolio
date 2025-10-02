@@ -1,58 +1,17 @@
-# Netlify Configuration for PR Previews
-# Production deploys to GitHub Pages, PRs preview on Netlify
-
+# Netlify Build Configuration
 [build]
-  # Build command
-  command = "pnpm build"
+  # Build command for production
+  command = "pnpm run build"
   
-  # Directory with the static files
-  publish = "out"
+  # Directory to deploy (output of build)
+  publish = "dist"
   
-  # Automatically install pnpm
-  [build.environment]
-    NODE_VERSION = "20"
-    PNPM_VERSION = "8"
+  # Redirect all requests to index.html for single-page application
+  [[redirects]]
+    from = "/*"
+    to = "/index.html"
+    status = 200
 
-# Production context is disabled since we deploy to GitHub Pages
-[context.production]
-  # Skip production builds on Netlify
-  command = "echo 'Production deploys to GitHub Pages. Skipping Netlify production build.'"
-  publish = "."
-
-# Deploy previews for pull requests (this is what we want!)
-[context.deploy-preview]
-  command = "pnpm build"
-  publish = "out"
-
-# Branch deploys are disabled - we only want PR previews
-# Production goes to GitHub Pages, branches don't need deploys
-
-# Redirects and headers
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "no-referrer-when-downgrade"
-
-# Cache static assets
-[[headers]]
-  for = "/_next/static/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.jpg"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.png"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.svg"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
+# Build environment variables
+[build.environment]
+  NODE_VERSION = "20"
