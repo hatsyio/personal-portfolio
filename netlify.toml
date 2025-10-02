@@ -10,7 +10,7 @@
 # Build environment
 [build.environment]
   NODE_VERSION = "22"
-  PNPM_VERSION = "9"
+  PNPM_VERSION = "10"
 
 # Production builds - skip (GitHub Pages handles this)
 [context.production]
