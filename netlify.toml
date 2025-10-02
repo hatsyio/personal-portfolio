@@ -15,3 +15,10 @@
 # Build environment
 [build.environment]
   NODE_VERSION = "20"
+
+# Disable Next.js plugin (we're using Vite now)
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+  
+  [plugins.inputs]
+    disable = true
