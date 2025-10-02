@@ -1,17 +1,17 @@
-# Netlify Build Configuration
+# Netlify Build Configuration for Vite
 [build]
-  # Build command for production
-  command = "pnpm run build"
+  # Build command - runs Vite build (tsc && vite build)
+  command = "pnpm build"
   
-  # Directory to deploy (output of build)
+  # Directory to deploy - Vite outputs to dist/
   publish = "dist"
-  
-  # Redirect all requests to index.html for single-page application
-  [[redirects]]
-    from = "/*"
-    to = "/index.html"
-    status = 200
 
-# Build environment variables
+# Redirect all requests to index.html for SPA routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Build environment
 [build.environment]
   NODE_VERSION = "20"
