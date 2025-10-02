@@ -1,0 +1,1 @@
+- You will never commit on the default branch follow a PR's flow.
