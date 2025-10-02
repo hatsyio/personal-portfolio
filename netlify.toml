@@ -9,7 +9,7 @@
 
 # Build environment
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "22"
   PNPM_VERSION = "9"
 
 # Production builds - skip (GitHub Pages handles this)
@@ -23,7 +23,7 @@
   publish = "dist"
 
 [context.deploy-preview.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "22"
 
 # Branch deploys - DISABLED
 [context.branch-deploy]
