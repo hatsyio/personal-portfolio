@@ -1,4 +1,4 @@
-import { ExternalLink } from './Icons'
+import { ExternalLink } from 'lucide-react'
 
 const projects = [
   {

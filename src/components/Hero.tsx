@@ -1,4 +1,4 @@
-import { Github, Twitter, Mail } from './Icons'
+import { Github, Twitter, Mail } from 'lucide-react'
 
 export function Hero() {
   return (
