@@ -1,0 +1,68 @@
+name: PR Checks
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'app/**'
+      - 'components/**'
+      - 'lib/**'
+      - '.github/workflows/**'
+
+jobs:
+  validate:
+    name: Validate lockfile and build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Verify lockfile is up to date
+        run: |
+          echo "🔍 Checking if lockfile is synchronized with package.json..."
+          pnpm install --frozen-lockfile
+          if [ -n "$(git status --porcelain)" ]; then
+            echo ""
+            echo "❌ ERROR: pnpm-lock.yaml is out of sync with package.json"
+            echo ""
+            echo "Please run 'pnpm install' locally and commit the updated lockfile:"
+            echo "  pnpm install"
+            echo "  git add pnpm-lock.yaml"
+            echo "  git commit -m 'chore: Update lockfile'"
+            echo ""
+            git status
+            exit 1
+          fi
+          echo "✅ Lockfile is up to date"
+
+      - name: Build project
+        run: |
+          echo "🏗️  Building Next.js project..."
+          pnpm build
+
+      - name: Verify build output
+        run: |
+          echo "🔍 Verifying build artifacts..."
+          if [ ! -d "out" ]; then
+            echo "❌ ERROR: Build did not create 'out' directory"
+            exit 1
+          fi
+          if [ ! -f "out/index.html" ]; then
+            echo "❌ ERROR: Build did not create index.html"
+            exit 1
+          fi
+          echo "✅ Build completed successfully"
+          echo "📦 Build output size: $(du -sh out | cut -f1)"
+
