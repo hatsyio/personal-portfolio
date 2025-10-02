@@ -29,7 +29,7 @@ Open [http://localhost:5173](http://localhost:5173) to view your site.
 
 1. **Personal Information**: Update the content in `src/components/Hero.tsx`, `src/components/About.tsx`
 2. **Projects**: Edit the projects array in `src/components/Projects.tsx`
-3. **Blog Posts**: Edit the blogPosts array in `src/components/Blog.tsx`
+3. **Blog Posts**: Edit the blogPosts array in `src/data/blogPosts.ts`
 4. **Social Links**: Update links in `src/components/Hero.tsx` and `src/components/Contact.tsx`
 5. **Colors**: Customize the theme in `src/index.css`
 
@@ -106,6 +106,7 @@ You can deploy the `dist` folder to any static hosting service:
 - **Framework**: React 18
 - **Build Tool**: Vite
 - **Styling**: Tailwind CSS v4
+- **Routing**: React Router DOM
 - **Icons**: Lucide React
 - **Language**: TypeScript
 
@@ -113,7 +114,7 @@ You can deploy the `dist` folder to any static hosting service:
 
 ```
 ├── src/
-│   ├── components/       # React components
+│   ├── components/       # React components (sections)
 │   │   ├── About.tsx
 │   │   ├── Blog.tsx
 │   │   ├── Contact.tsx
@@ -121,12 +122,64 @@ You can deploy the `dist` folder to any static hosting service:
 │   │   ├── Hero.tsx
 │   │   ├── Navigation.tsx
 │   │   └── Projects.tsx
-│   ├── App.tsx          # Main app component
+│   ├── pages/           # Route-level pages
+│   │   ├── Home.tsx     # Main landing page
+│   │   └── BlogPost.tsx # Individual blog post page
+│   ├── data/            # Static data
+│   │   └── blogPosts.ts # Blog posts array
+│   ├── App.tsx          # Main app component with routing
 │   ├── main.tsx         # Entry point
 │   └── index.css        # Global styles
 ├── public/              # Static assets
 ├── index.html           # HTML template
 └── vite.config.ts       # Vite configuration
+```
+
+## Routing
+
+The site uses React Router for client-side routing:
+
+- **`/`** - Home page with all main sections (Hero, About, Projects, Blog, Contact)
+- **`/blog/:slug`** - Individual blog post pages (dynamic route based on slug)
+
+Blog posts link to their individual pages from the Blog section on the home page.
+
+## Adding Content
+
+### Adding a New Blog Post
+
+Edit `src/data/blogPosts.ts` and add a new entry to the `blogPosts` array:
+
+```typescript
+{
+  slug: 'your-post-url-slug',
+  title: 'Your Post Title',
+  excerpt: 'A brief description for the blog card',
+  date: 'Month Day, Year',
+  image: '/your-image.jpg',
+  content: `
+    <p>Your HTML content here...</p>
+    <h2>Subheading</h2>
+    <p>More content...</p>
+  `,
+}
+```
+
+Place your image in the `public/` folder and reference it with an absolute path (e.g., `/your-image.jpg`).
+
+### Adding a New Project
+
+Edit the `projects` array in `src/components/Projects.tsx`:
+
+```typescript
+{
+  title: 'Project Name',
+  description: 'Project description',
+  tags: ['Tech1', 'Tech2', 'Tech3'],
+  link: 'https://github.com/username/repo',
+  year: '2024',
+  image: '/project-image.jpg',
+}
 ```
 
 ## License
