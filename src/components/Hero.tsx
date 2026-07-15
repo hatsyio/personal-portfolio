@@ -1,6 +1,6 @@
 export function Hero() {
   return (
-    <section className="min-h-screen flex items-center px-6 py-20">
+    <section className="px-6 py-16">
       <div className="max-w-3xl mx-auto w-full">
         <div className="mb-8">
           <div className="w-28 h-28 rounded-full overflow-hidden border-2 border-secondary">

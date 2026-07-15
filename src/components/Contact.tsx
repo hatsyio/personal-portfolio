@@ -14,7 +14,7 @@ const links = [
 
 export function Contact() {
   return (
-    <section id="contact" className="min-h-screen flex items-center px-6 py-20">
+    <section id="contact" className="px-6 py-16">
       <div className="max-w-3xl mx-auto w-full">
         <h2 className="text-3xl lg:text-4xl italic mb-10">Contact</h2>
 
