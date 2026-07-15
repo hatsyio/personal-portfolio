@@ -1,56 +1,25 @@
-import { Github, Twitter, Mail } from './Icons'
-
 export function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 lg:px-20 relative overflow-hidden">
-      <div className="max-w-4xl w-full relative z-10">
-        <div className="mb-8 flex justify-center lg:justify-start">
-          <div className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-primary/40">
+    <section className="px-6 py-16">
+      <div className="max-w-3xl mx-auto w-full">
+        <div className="mb-8">
+          <div className="w-28 h-28 rounded-full overflow-hidden border-2 border-secondary">
             <img
               src="/developer-profile-photo.jpg"
               alt="Josep Pascual Badia"
-              width="128"
-              height="128"
+              width="112"
+              height="112"
               className="object-cover w-full h-full"
             />
           </div>
         </div>
 
-        <h1 className="text-5xl lg:text-7xl font-bold mb-6 text-balance">Josep Pascual Badia</h1>
-        <p className="text-xl lg:text-2xl text-primary mb-8 font-light">Developer & Creator</p>
-        <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed mb-12">
-          Soy un desarrollador apasionado por la tecnología y la creatividad. Me considero un idealista práctico que
-          disfruta tanto de escribir código como de jugar videojuegos. También me encanta la buena comida, una cerveza
-          fría y, por supuesto, los gatos.
+        <h1 className="text-4xl lg:text-5xl italic mb-4 text-balance">
+          Practical idealist, occasional coder.
+        </h1>
+        <p className="text-lg text-muted-foreground max-w-xl leading-relaxed">
+          I build things, chase good games, and I&apos;m always up for trying the next dish worth crossing town for.
         </p>
-
-        <div className="flex gap-6">
-          <a
-            href="https://github.com/hatsyio"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-primary transition-colors duration-300"
-            aria-label="GitHub"
-          >
-            <Github className="w-6 h-6" />
-          </a>
-          <a
-            href="https://x.com/hatsyio"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-primary transition-colors duration-300"
-            aria-label="Twitter"
-          >
-            <Twitter className="w-6 h-6" />
-          </a>
-          <a
-            href="mailto:contact@joseppascual.com"
-            className="text-muted-foreground hover:text-primary transition-colors duration-300"
-            aria-label="Email"
-          >
-            <Mail className="w-6 h-6" />
-          </a>
-        </div>
       </div>
     </section>
   )

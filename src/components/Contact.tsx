@@ -1,76 +1,44 @@
-import { Github, Twitter, Mail, Globe } from './Icons'
+import { Github, Twitter, Mail, Linkedin } from './Icons'
+
+const links = [
+  { label: 'Email', value: 'contact@joseppascual.com', href: 'mailto:contact@joseppascual.com', Icon: Mail },
+  { label: 'GitHub', value: '@hatsyio', href: 'https://github.com/hatsyio', Icon: Github },
+  { label: 'X (Twitter)', value: '@hatsyio', href: 'https://x.com/hatsyio', Icon: Twitter },
+  {
+    label: 'LinkedIn',
+    value: 'josep-pascual-badia',
+    href: 'https://www.linkedin.com/in/josep-pascual-badia-14a199a2/',
+    Icon: Linkedin,
+  },
+]
 
 export function Contact() {
   return (
-    <section id="contact" className="min-h-screen flex items-center px-6 lg:px-20 py-20 relative">
-      <div className="max-w-4xl w-full lg:ml-32 relative z-10">
-        <h2 className="text-4xl lg:text-5xl font-bold mb-12">Contacto</h2>
+    <section id="contact" className="px-6 py-16">
+      <div className="max-w-3xl mx-auto w-full">
+        <h2 className="text-3xl lg:text-4xl italic mb-10">Contact</h2>
 
-        <div className="space-y-8">
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            ¿Tienes alguna pregunta o quieres colaborar en un proyecto? No dudes en contactarme a través de cualquiera
-            de estos canales. Siempre estoy abierto a nuevas oportunidades y conversaciones interesantes.
-          </p>
+        <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+          Got a question or want to collaborate on something? Reach out through any of these — always happy to
+          hear about new projects.
+        </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {links.map(({ label, value, href, Icon }) => (
             <a
-              href="https://github.com/hatsyio"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group p-6 bg-card/60 border border-primary/30 rounded-lg hover:border-primary/50 transition-all duration-300"
+              key={label}
+              href={href}
+              target={href.startsWith('mailto:') ? undefined : '_blank'}
+              rel={href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+              className="group flex items-center gap-4 p-5 border border-border rounded-lg bg-card/60 hover:border-primary/60 transition-colors duration-300"
             >
-              <div className="flex items-center gap-4">
-                <Github className="w-8 h-8 text-primary transition-colors duration-300" />
-                <div>
-                  <h3 className="text-xl font-semibold mb-1 group-hover:text-primary transition-colors">GitHub</h3>
-                  <p className="text-sm text-muted-foreground">@hatsyio</p>
-                </div>
+              <Icon className="w-6 h-6 text-primary" />
+              <div>
+                <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">{label}</h3>
+                <p className="text-sm text-muted-foreground">{value}</p>
               </div>
             </a>
-
-            <a
-              href="https://x.com/hatsyio"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group p-6 bg-card/60 border border-primary/30 rounded-lg hover:border-primary/50 transition-all duration-300"
-            >
-              <div className="flex items-center gap-4">
-                <Twitter className="w-8 h-8 text-primary transition-colors duration-300" />
-                <div>
-                  <h3 className="text-xl font-semibold mb-1 group-hover:text-primary transition-colors">X (Twitter)</h3>
-                  <p className="text-sm text-muted-foreground">@hatsyio</p>
-                </div>
-              </div>
-            </a>
-
-            <a
-              href="mailto:contact@joseppascual.com"
-              className="group p-6 bg-card/60 border border-primary/30 rounded-lg hover:border-primary/50 transition-all duration-300"
-            >
-              <div className="flex items-center gap-4">
-                <Mail className="w-8 h-8 text-accent transition-colors duration-300" />
-                <div>
-                  <h3 className="text-xl font-semibold mb-1 group-hover:text-accent transition-colors">Email</h3>
-                  <p className="text-sm text-muted-foreground">contact@joseppascual.com</p>
-                </div>
-              </div>
-            </a>
-
-            <a
-              href="https://www.joseppascual.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group p-6 bg-card/60 border border-primary/30 rounded-lg hover:border-primary/50 transition-all duration-300"
-            >
-              <div className="flex items-center gap-4">
-                <Globe className="w-8 h-8 text-accent transition-colors duration-300" />
-                <div>
-                  <h3 className="text-xl font-semibold mb-1 group-hover:text-accent transition-colors">Website</h3>
-                  <p className="text-sm text-muted-foreground">www.joseppascual.com</p>
-                </div>
-              </div>
-            </a>
-          </div>
+          ))}
         </div>
       </div>
     </section>
