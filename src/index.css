@@ -1,32 +1,30 @@
 @import "tailwindcss";
 
 :root {
-  /* Deep dark background */
-  --background: oklch(0.12 0.02 265);
-  /* Bright white text */
-  --foreground: oklch(0.98 0 0);
-  /* Slightly lighter dark for cards with transparency */
-  --card: oklch(0.15 0.02 265);
-  --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.15 0.02 265);
-  --popover-foreground: oklch(0.98 0 0);
-  /* Neon cyan primary */
-  --primary: oklch(0.75 0.2 195);
-  --primary-foreground: oklch(0.12 0.02 265);
-  /* Neon purple secondary */
-  --secondary: oklch(0.25 0.05 265);
-  --secondary-foreground: oklch(0.98 0 0);
-  --muted: oklch(0.25 0.03 265);
-  --muted-foreground: oklch(0.65 0.05 265);
-  /* Neon magenta accent */
-  --accent: oklch(0.7 0.25 330);
-  --accent-foreground: oklch(0.12 0.02 265);
+  /* Warm off-white background */
+  --background: #faf6ee;
+  /* Near-black brown text */
+  --foreground: #2b2620;
+  /* Slightly darker warm card background */
+  --card: #f2ead9;
+  --card-foreground: #2b2620;
+  --popover: #f2ead9;
+  --popover-foreground: #2b2620;
+  /* Terracotta — the site's single accent color */
+  --primary: #c2703d;
+  --primary-foreground: #faf6ee;
+  --secondary: #e6ddc9;
+  --secondary-foreground: #2b2620;
+  --muted: #efe7d6;
+  --muted-foreground: #6b6255;
+  --accent: #c2703d;
+  --accent-foreground: #faf6ee;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.25 0.05 265);
-  --input: oklch(0.25 0.05 265);
-  --ring: oklch(0.75 0.2 195);
-  --radius: 1rem;
+  --border: #e6ddc9;
+  --input: #e6ddc9;
+  --ring: #c2703d;
+  --radius: 0.75rem;
 }
 
 @theme inline {
@@ -65,5 +63,9 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3 {
+  font-family: Georgia, 'Times New Roman', serif;
 }
 
