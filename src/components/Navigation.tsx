@@ -1,19 +1,24 @@
 import { useState, useEffect } from 'react'
 
+const navItems = [
+  { id: 'about', label: 'About' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'contact', label: 'Contact' },
+]
+
 export function Navigation() {
   const [activeSection, setActiveSection] = useState('about')
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['about', 'projects', 'blog', 'contact']
       const scrollPosition = window.scrollY + 100
 
-      for (const section of sections) {
-        const element = document.getElementById(section)
+      for (const item of navItems) {
+        const element = document.getElementById(item.id)
         if (element) {
           const { offsetTop, offsetHeight } = element
           if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section)
+            setActiveSection(item.id)
             break
           }
         }
@@ -24,25 +29,19 @@ export function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const navItems = [
-    { id: 'about', label: 'SOBRE MÍ' },
-    { id: 'projects', label: 'PROYECTOS' },
-    { id: 'blog', label: 'BLOG' },
-    { id: 'contact', label: 'CONTACTO' },
-  ]
-
   return (
-    <nav className="fixed left-8 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
-      <div className="bg-card/30 backdrop-blur-xl border border-primary/20 rounded-2xl p-6 shadow-[0_0_30px_rgba(0,200,255,0.15)]">
-        <ul className="flex flex-col gap-6">
+    <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-sm">
+      <nav className="max-w-3xl mx-auto flex items-center justify-between px-6 py-4">
+        <span className="text-sm tracking-wide">Josep Pascual Badia</span>
+        <ul className="flex gap-6">
           {navItems.map((item) => (
             <li key={item.id}>
               <a
                 href={`#${item.id}`}
-                className={`text-sm tracking-wider transition-all duration-300 block ${
+                className={`text-sm tracking-wide transition-colors duration-300 pb-1 border-b-2 ${
                   activeSection === item.id
-                    ? 'text-primary border-l-2 border-primary pl-4 drop-shadow-[0_0_8px_rgba(0,200,255,0.8)]'
-                    : 'text-muted-foreground hover:text-primary hover:drop-shadow-[0_0_8px_rgba(0,200,255,0.5)] pl-4'
+                    ? 'text-primary border-primary'
+                    : 'text-muted-foreground border-transparent hover:text-primary'
                 }`}
               >
                 {item.label}
@@ -50,8 +49,8 @@ export function Navigation() {
             </li>
           ))}
         </ul>
-      </div>
-    </nav>
+      </nav>
+    </header>
   )
 }
 
