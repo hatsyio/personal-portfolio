@@ -117,3 +117,82 @@ export function ExternalLink({ className = "w-6 h-6" }: IconProps) {
   )
 }
 
+export function GitPullRequest({ className = "w-6 h-6" }: IconProps) {
+  return (
+    <svg
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="18" cy="18" r="3" />
+      <circle cx="6" cy="6" r="3" />
+      <path d="M13 6h3a2 2 0 0 1 2 2v7" />
+      <line x1="6" y1="9" x2="6" y2="21" />
+    </svg>
+  )
+}
+
+export function Gamepad({ className = "w-6 h-6" }: IconProps) {
+  return (
+    <svg
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M8 6h8a5 5 0 0 1 5 5v2a5 5 0 0 1-5 5c-.9 0-1.4-.5-1.9-1l-1-1a1.8 1.8 0 0 0-2.2 0l-1 1c-.5.5-1 1-1.9 1a5 5 0 0 1-5-5v-2a5 5 0 0 1 5-5z" />
+      <path d="M8 10v4M6 12h4" />
+      <circle cx="16" cy="10.5" r="0.5" fill="currentColor" />
+      <circle cx="18" cy="13.5" r="0.5" fill="currentColor" />
+    </svg>
+  )
+}
+
+export function Chart({ className = "w-6 h-6" }: IconProps) {
+  return (
+    <svg
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M3 3v18h18" />
+      <rect x="7" y="13" width="3" height="5" />
+      <rect x="12" y="9" width="3" height="9" />
+      <rect x="17" y="5" width="3" height="13" />
+    </svg>
+  )
+}
+
+export function Ball({ className = "w-6 h-6" }: IconProps) {
+  return (
+    <svg
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18" />
+      <circle cx="12" cy="12" r="2.5" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
