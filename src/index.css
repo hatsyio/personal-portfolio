@@ -88,6 +88,7 @@
 @layer base {
   html {
     overflow-x: clip;
+    scroll-behavior: smooth;
   }
 }
 
@@ -121,6 +122,10 @@
   *, *::before, *::after {
     animation-duration: 150ms !important;
     transition-duration: 150ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
   }
 }
 

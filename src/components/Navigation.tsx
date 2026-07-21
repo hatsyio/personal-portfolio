@@ -35,9 +35,12 @@ export function Navigation() {
         aria-label="Primary"
         className="mx-auto flex max-w-2xl flex-col items-center justify-center gap-1 rounded-full border border-border bg-background/70 px-3 py-2 shadow-lg shadow-black/20 backdrop-blur-md sm:flex-row sm:justify-between sm:gap-4 sm:px-5 sm:py-2.5"
       >
-        <span className="font-display text-sm font-bold tracking-tight whitespace-nowrap sm:text-base">
+        <a
+          href="#top"
+          className="font-display text-sm font-bold tracking-tight whitespace-nowrap transition-colors duration-[var(--dur-short)] hover:text-primary sm:text-base"
+        >
           Josep Pascual Badia
-        </span>
+        </a>
         <ul className="flex items-center gap-0.5 sm:gap-1">
           {navItems.map((item) => (
             <li key={item.id}>
