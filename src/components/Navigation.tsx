@@ -30,18 +30,24 @@ export function Navigation() {
   }, [])
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-sm">
-      <nav className="max-w-3xl mx-auto flex items-center justify-between px-6 py-4">
-        <span className="text-sm tracking-wide">Josep Pascual Badia</span>
-        <ul className="flex gap-6">
+    <header className="sticky top-0 z-50 w-full px-3 pt-[var(--space-md)] sm:px-4">
+      <nav
+        aria-label="Primary"
+        className="mx-auto flex max-w-2xl items-center justify-between gap-2 rounded-full border border-border bg-background/70 px-3 py-2 shadow-lg shadow-black/20 backdrop-blur-md sm:gap-4 sm:px-5 sm:py-2.5"
+      >
+        <span className="font-display text-sm font-bold tracking-tight whitespace-nowrap sm:text-base">
+          <span className="hidden sm:inline">Josep Pascual Badia</span>
+          <span className="sm:hidden">Josep Badia</span>
+        </span>
+        <ul className="flex items-center gap-0.5 sm:gap-1">
           {navItems.map((item) => (
             <li key={item.id}>
               <a
                 href={`#${item.id}`}
-                className={`text-sm tracking-wide transition-colors duration-300 pb-1 border-b-2 ${
+                className={`inline-block whitespace-nowrap rounded-full px-2 py-1 text-xs transition-colors duration-[var(--dur-short)] sm:px-3 sm:text-sm ${
                   activeSection === item.id
-                    ? 'text-primary border-primary'
-                    : 'text-muted-foreground border-transparent hover:text-primary'
+                    ? 'bg-primary/10 text-primary'
+                    : 'text-muted-foreground hover:text-primary'
                 }`}
               >
                 {item.label}
@@ -53,4 +59,3 @@ export function Navigation() {
     </header>
   )
 }
-
