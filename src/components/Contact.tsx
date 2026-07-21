@@ -1,47 +1,47 @@
-import { Github, Twitter, Mail, Linkedin } from './Icons'
+import { Github, Linkedin, Mail, Twitter } from './Icons'
 
-const links = [
-  { label: 'Email', value: 'contact@joseppascual.com', href: 'mailto:contact@joseppascual.com', Icon: Mail },
-  { label: 'GitHub', value: '@hatsyio', href: 'https://github.com/hatsyio', Icon: Github },
-  { label: 'X (Twitter)', value: '@hatsyio', href: 'https://x.com/hatsyio', Icon: Twitter },
-  {
-    label: 'LinkedIn',
-    value: 'josep-pascual-badia',
-    href: 'https://www.linkedin.com/in/josep-pascual-badia-14a199a2/',
-    Icon: Linkedin,
-  },
+const channels = [
+  { href: 'mailto:contact@joseppascual.com', label: 'Email', Icon: Mail, external: false },
+  { href: 'https://github.com/hatsyio', label: 'GitHub', Icon: Github, external: true },
+  { href: 'https://x.com/hatsyio', label: 'X', Icon: Twitter, external: true },
+  { href: 'https://www.linkedin.com/in/josep-pascual-badia-14a199a2/', label: 'LinkedIn', Icon: Linkedin, external: true },
 ]
+
+const sectionLabelClass = 'text-xs font-semibold uppercase text-primary'
+const sectionLabelStyle = { letterSpacing: '0.09em' }
+
+function ContactTile({ href, label, Icon, external }: Readonly<(typeof channels)[number]>) {
+  return (
+    <a
+      href={href}
+      target={external ? '_blank' : undefined}
+      rel={external ? 'noopener noreferrer' : undefined}
+      className="group flex min-h-[44px] items-center gap-3 rounded-[var(--radius)] border border-border bg-card/40 px-[var(--space-lg)] py-[var(--space-md)] text-foreground transition-colors duration-[var(--dur-short)] hover:border-primary hover:text-primary focus-visible:border-primary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+    >
+      <Icon className="h-5 w-5 shrink-0 text-current transition-colors duration-[var(--dur-short)]" />
+      <span className="font-medium">{label}</span>
+    </a>
+  )
+}
 
 export function Contact() {
   return (
-    <section id="contact" className="px-6 py-16">
-      <div className="max-w-3xl mx-auto w-full">
-        <h2 className="text-3xl lg:text-4xl italic mb-10">Contact</h2>
-
-        <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-          Got a question or want to collaborate on something? Reach out through any of these — always happy to
-          hear about new projects.
+    <section id="contact" className="px-6 py-[var(--space-2xl)]">
+      <div className="mx-auto w-full max-w-[58ch]">
+        <p className={`${sectionLabelClass} mb-[var(--space-lg)]`} style={sectionLabelStyle}>
+          Contact
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {links.map(({ label, value, href, Icon }) => (
-            <a
-              key={label}
-              href={href}
-              target={href.startsWith('mailto:') ? undefined : '_blank'}
-              rel={href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-              className="group flex items-center gap-4 p-5 border border-border rounded-lg bg-card/60 hover:border-primary/60 transition-colors duration-300"
-            >
-              <Icon className="w-6 h-6 text-primary" />
-              <div>
-                <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">{label}</h3>
-                <p className="text-sm text-muted-foreground">{value}</p>
-              </div>
-            </a>
+        <p className="mb-[var(--space-lg)] font-body text-lg leading-[1.65] text-muted-foreground">
+          Got a question or want to collaborate on something? Reach out.
+        </p>
+
+        <div className="grid grid-cols-1 gap-[var(--space-md)] min-[40rem]:grid-cols-2">
+          {channels.map((channel) => (
+            <ContactTile key={channel.label} {...channel} />
           ))}
         </div>
       </div>
     </section>
   )
 }
-
