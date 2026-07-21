@@ -38,7 +38,7 @@ export function Hero() {
           className="mb-[var(--space-lg)] h-20 w-20 -rotate-[7deg] rounded-full border-2 border-primary object-cover md:h-24 md:w-24"
         />
 
-        <h1 className="hero-reveal font-display text-[clamp(2.75rem,8vw,5.5rem)] leading-[1.02] font-extrabold tracking-tight text-balance uppercase">
+        <h1 className="hero-reveal font-display text-[clamp(2.3rem,8vw,5.5rem)] leading-[1.02] font-extrabold tracking-tight text-balance uppercase">
           Practical idealist, occasional coder.
         </h1>
 
