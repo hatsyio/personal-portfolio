@@ -33,11 +33,10 @@ export function Navigation() {
     <header className="sticky top-0 z-50 w-full px-3 pt-[var(--space-md)] sm:px-4">
       <nav
         aria-label="Primary"
-        className="mx-auto flex max-w-2xl items-center justify-between gap-2 rounded-full border border-border bg-background/70 px-3 py-2 shadow-lg shadow-black/20 backdrop-blur-md sm:gap-4 sm:px-5 sm:py-2.5"
+        className="mx-auto flex max-w-2xl flex-col items-center justify-center gap-1 rounded-full border border-border bg-background/70 px-3 py-2 shadow-lg shadow-black/20 backdrop-blur-md sm:flex-row sm:justify-between sm:gap-4 sm:px-5 sm:py-2.5"
       >
         <span className="font-display text-sm font-bold tracking-tight whitespace-nowrap sm:text-base">
-          <span className="hidden sm:inline">Josep Pascual Badia</span>
-          <span className="sm:hidden">Josep Badia</span>
+          Josep Pascual Badia
         </span>
         <ul className="flex items-center gap-0.5 sm:gap-1">
           {navItems.map((item) => (
