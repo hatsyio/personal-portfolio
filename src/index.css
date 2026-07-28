@@ -1,33 +1,36 @@
 @import "tailwindcss";
 
 /* Hallmark · macrostructure: Marquee Hero + Bento Grid · nav: N5 Floating pill · footer: Ft2 Inline single line
- * genre: bold-graphic (custom) · theme: near-black mono light-blue accent · anchor hue: 229
+ * genre: bold-graphic (custom) · theme: near-black warm-neutral crimson accent · anchor hue: 20
+ * palette source: colorhunt.co/palette/171717444444da0037ededed
  * pre-emit critique: P4 H5 E5 S4 R5 V4
  */
 
 :root {
-  /* Near-black cool-neutral page background */
-  --background: oklch(20.0% 0.009 264);
-  /* Near-white primary text */
-  --foreground: oklch(96.6% 0.003 229);
+  /* Near-black warm-neutral page background — anchored to #171717 */
+  --background: oklch(20.5% 0.004 35);
+  /* Off-white primary text — anchored to #EDEDED */
+  --foreground: oklch(95% 0.003 35);
   /* Card / tile surface */
-  --card: oklch(23.8% 0.011 261);
+  --card: oklch(24.5% 0.006 35);
   --card-foreground: var(--foreground);
   --popover: var(--card);
   --popover-foreground: var(--foreground);
-  /* Light sky-blue — the site's single accent */
-  --primary: oklch(78% 0.14 229);
+  /* Crimson accent — lightened tint of #DA0037's hue so small text (nav, badges) clears AA on the dark bg; the raw saturated value lives in --destructive */
+  --primary: oklch(71% 0.19 20);
   --primary-foreground: var(--background);
   /* Slightly darker/lower-chroma step of the --card neutral family, for subtle surface variation */
-  --secondary: oklch(21.5% 0.010 262);
+  --secondary: oklch(22.5% 0.005 35);
   --secondary-foreground: var(--foreground);
   --muted: var(--secondary);
-  --muted-foreground: oklch(84.3% 0.009 248);
+  /* Mid-gray text — lifted from #444444's lightness (too dark at native value to read on this bg) */
+  --muted-foreground: oklch(72% 0.010 35);
   --accent: var(--primary);
   --accent-foreground: var(--background);
-  --destructive: oklch(0.577 0.245 27.325);
+  /* True palette red, #DA0037, unlightened */
+  --destructive: oklch(56.2% 0.226 20.4);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(30.8% 0.012 258);
+  --border: oklch(32% 0.010 35);
   --input: var(--border);
   --ring: var(--primary);
   --radius: 0.375rem;
